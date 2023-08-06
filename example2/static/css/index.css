@@ -1,0 +1,42 @@
+body{
+    background: #4b6cb7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.regForm{
+   padding: 4%;
+   background-color: white;
+   position: relative;
+   top: 100px;
+   color: grey;
+
+}
+.regForm h2{
+    text-align: center;
+}
+form>.row{
+    margin: 2%;
+}
+
+.loginForm{
+    padding: 4%;
+    background-color: white;
+    position: relative;
+    top: 100px;
+    color: gray;
+}
+.loginForm h2{
+    text-align: center;
+    color: #182848;
+}
+@media (min-width:800px){
+    #login{
+        display: flex;
+        justify-content: center;
+    }
+    .loginForm{
+        width: 50%;
+    }
+
+}

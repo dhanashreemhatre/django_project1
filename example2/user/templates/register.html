@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="regForm">
+    {%if error_msg%}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{error_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    <h2>Create Account</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="form-label"> {{form.username.label}}</label>
+                {{form.username}}
+            </div>
+            <div class="col-lg-6">
+                <label class="form-label"> {{form.email.label}}</label>
+                {{form.email}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="form-label"> {{form.first_name.label}}</label>
+                {{form.first_name}}
+            </div>
+            <div class="col-lg-6">
+                <label class="form-label"> {{form.last_name.label}}</label>
+                {{form.last_name}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="form-label"> {{form.password.label}}</label>
+                {{form.password}}
+            </div>
+            <div class="col-lg-6">
+                <label class="form-label"> {{form.password2.label}}</label>
+                {{form.password2}}
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="submit" class="btn btn-outline-primary">
+        </div>
+    </form>
+    <p>already created account? <a href="{% url 'login' %}"><span>login</span></a></p>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Photo Gallery</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Add other navigation links here -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Add Photos</a>
+                    </li>
+                </ul>
+                <div class="me-auto text-white"><span> hello,{{user.username}} &hearts;</span></div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h1>Welcome to My Photo Gallery</h1>
+        <!-- Add photo upload form here -->
+        <form method="post">
+            {%csrf_token%}
+            <div class="mb-3">
+                <label for="photo">Select Photo</label>
+                <input type="file" class="form-control" id="photo" name="photo" accept="image/png, image/jpeg" >
+            </div>
+            <button type="submit" class="btn btn-primary">Upload Photo</button>
+        </form>
+    
+        <!-- Display Photos -->
+        <div class="row mt-4">
+            <!-- Add photos and comments loop here (You will need backend logic for this) -->
+           {% for image in images %}
+           <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{image.Images.url}}" class="card-img-top" alt="Photo">
+                <div class="card-body">
+                    <h5 class="card-title">{{image.title}}</h5>
+                    <p class="card-text">{{image.description}}</p>
+                    <!-- Add comment section here -->
+                    <form action="/add_comment" method="post">
+                        <div class="mb-3">
+                            <label for="comment">Add Comment</label>
+                            <input type="text" class="form-control" id="comment" name="comment">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+           {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+</html>
